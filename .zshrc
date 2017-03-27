@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+# Make sure that .profile has been loaded, even if there was no "login shell"
+# in our lineage.
+if [ -z "$_PROFILE_LOADED" ]; then
+    source ~/.profile
+else
+    # Always want arrayutil
+    source ~/.profile.d/arrayutil
+fi
+
+source ~/.zsh/rc.d/prompt
+source ~/.zsh/rc.d/editor
+source ~/.zsh/rc.d/dir
+source ~/.zsh/rc.d/completion
+source ~/.zsh/rc.d/highlighting
+source ~/.zsh/rc.d/history
+source ~/.zsh/rc.d/fzf
+
+source ~/.zsh/rc.d/golang
+
+source ~/.aliases
+
+if [[ -f "$HOME/.zsh/rc.d/local" ]]; then
+    source "$HOME/.zsh/rc.d/local"
+fi
